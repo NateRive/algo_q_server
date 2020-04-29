@@ -6,28 +6,20 @@ import (
 	"github.com/labstack/echo"
 )
 
-// User
-type User struct {
-	Name  string `json:"name"`
-	Comment string `json:"comment"`
+func NewRouter() *echo.Echo {
+	e := echo.New()
+
+	e.GET("/", Handler)
+	return e
 }
 
-// Handler
-func data(c echo.Context) error {
-	u := &User{
-		Name:  "Iwase",
-		Comment: "Nice to meet you",
-	}
-	return c.JSON(http.StatusOK, u)
+func Handler(c echo.Context) error {
+	return c.String(http.StatusOK, "Hello")
 }
 
 func main() {
-	// Echo instance
-	e := echo.New()
-
-	// Routes
-	e.GET("/", data)
+	router := NewRouter()
 
 	// Start server
-	e.Logger.Fatal(e.Start(":1323"))
+	router.Logger.Fatal(router.Start(":1323"))
 }
