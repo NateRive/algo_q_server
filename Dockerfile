@@ -8,7 +8,7 @@ RUN go get github.com/NateRive/algo_q_server
 WORKDIR /go/src/github.com/NateRive/algo_q_server
 
 #Build the project and send the output to /bin/algo_q_server
-RUN go build -o /bin/algo_q_server
+RUN go build main.go -o /bin/algo_q_server
 
 FROM golang:1.12-alpine
 
