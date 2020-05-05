@@ -8,9 +8,10 @@ FROM golang:1.12-alpine AS build
 #WORKDIR /go/src/github.com/golang/example/hello
 
 # Build the project and send the output to /bin/HelloWorld
-RUN go build -o /bin/algo_q_server
+RUN go build hello.go
+#-o /bin/algo_q_server
 
-FROM golang:1.12-alpine
+#FROM golang:1.12-alpine
 #Copy the build's output binary from the previous build container
-COPY --from=build /bin/algo_q_server /bin/algo_q_server
-ENTRYPOINT ["/bin/algo_q_server"]
+#COPY --from=build /bin/algo_q_server /bin/algo_q_server
+#ENTRYPOINT ["/bin/algo_q_server"]
