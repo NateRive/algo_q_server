@@ -27,6 +27,6 @@ FROM golang:1.12-alpine
 #Copy the build's output binary from the previous build container
 COPY --from=build /algo_q_server/main /algo_q_server/main
 WORKDIR /algo_q_server
-RUN ./main.go
+RUN ./main
 
 ENTRYPOINT ["/algo_q_server"]
