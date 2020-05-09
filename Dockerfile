@@ -14,7 +14,8 @@ WORKDIR /algo_q_server
 #RUN CGO_ENABLED=1 go test
 
 #Build the project
-RUN go build main.go
+#RUN go build main.go
+RUN go run main.go
 
 
 FROM golang:1.12-alpine
