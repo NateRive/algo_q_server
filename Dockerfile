@@ -1,6 +1,6 @@
 FROM golang:1.12-alpine AS build
 
-COPY main.go main_test.go /algo_q_server
+COPY main.go main_test.go /algo_q_server/
 WORKDIR /algo_q_server
 
 #Build the project
