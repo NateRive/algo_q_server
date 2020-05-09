@@ -4,8 +4,8 @@ FROM golang:1.12-alpine AS build
 RUN apk add --no-cache git
 
 #Get the echo and assert package from a GitHub repository
-RUN go get github.com/labstack/echo
-RUN go get github.com/stretchr/testify/assert
+#RUN go get github.com/labstack/echo
+#RUN go get github.com/stretchr/testify/assert
 
 COPY main.go main_test.go /algo_q_server/
 WORKDIR /algo_q_server
@@ -14,8 +14,8 @@ WORKDIR /algo_q_server
 #RUN CGO_ENABLED=1 go test
 
 #Build the project
-#RUN go build main.go
-RUN go run main.go
+RUN go build main.go
+#RUN go run main.go
 
 
 FROM golang:1.12-alpine
