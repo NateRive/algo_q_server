@@ -17,11 +17,8 @@ RUN CGO_ENABLED=0 go test
 RUN go build main.go
 
 
-FROM golang:1.12-alpine
 
-#Copy the echo and assert package from the previous build container
-#COPY -r --from=build go/src/github.com/labstack/echo /go/src/github.com/labstack/echo
-#COPY -r --from=build go/src/github.com/stretchr/testify/assert /go/src/github.com/stretchr/testify/assert
+FROM golang:1.12-alpine
 
 #Copy the build's output binary from the previous build container
 COPY --from=build /algo_q_server/main /algo_q_server/main
