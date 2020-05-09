@@ -1,5 +1,8 @@
 FROM golang:1.12-alpine AS build
 
+#Get the echo package from a GitHub repository
+RUN go get github.com/labstack/echo
+
 COPY main.go main_test.go /algo_q_server/
 WORKDIR /algo_q_server
 
