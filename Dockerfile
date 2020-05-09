@@ -11,11 +11,10 @@ COPY main.go main_test.go /algo_q_server/
 WORKDIR /algo_q_server
 
 #Test
-#RUN CGO_ENABLED=1 go test
+RUN CGO_ENABLED=0 go test
 
 #Build the project
 RUN go build main.go
-#RUN go run main.go
 
 
 FROM golang:1.12-alpine
@@ -26,7 +25,5 @@ FROM golang:1.12-alpine
 
 #Copy the build's output binary from the previous build container
 COPY --from=build /algo_q_server/main /algo_q_server/main
-WORKDIR /algo_q_server
-RUN ./main
 
 ENTRYPOINT ["/algo_q_server"]
