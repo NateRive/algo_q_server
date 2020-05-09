@@ -1,18 +1,11 @@
 FROM golang:1.12-alpine AS build
 
-#Install git
-RUN apk add --no-cache git
+COPY main.go main_test.go /algo_q_server
+WORKDIR /algo_q_server
 
-#Get the package from a GitHub repository
-RUN go get github.com/NateRive/algo_q_server/main.go
-WORKDIR /go/src/github.com/NateRive/algo_q_server
+#Build the project
+RUN go build main.go main_test.go　
+RUN ./main_test
+RUN rm main_test
 
-#Build the project and send the output to /bin/algo_q_server
-RUN go build -o /bin/algo_q_server
-
-FROM golang:1.12-alpine
-
-#Copy the build's output binary from the previous build container
-COPY --from=build /bin/algo_q_server /bin/algo_q_server
-
-ENTRYPOINT ["/bin/algo_q_server"]
+ENTRYPOINT ["/algo_q_server"]
