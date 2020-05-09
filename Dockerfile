@@ -11,7 +11,7 @@ COPY main.go main_test.go /algo_q_server/
 WORKDIR /algo_q_server
 
 #Test
-RUN CGO_ENABLED=1 go test
+#RUN CGO_ENABLED=1 go test
 
 #Build the project
 RUN go build main.go
