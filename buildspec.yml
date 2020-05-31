@@ -18,3 +18,9 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $ECR_REPO_URI
+      - printf '{"Version":"1.0","ImageURI":"%s"}' $ECR_REPO_URI > imageDetail.json
+
+
+artifacts:
+  ## buildの最後で作成したファイルをアーティファクトとして流す
+  files: imageDetail.json
