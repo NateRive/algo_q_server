@@ -14,7 +14,7 @@ func NewRouter() *echo.Echo {
 }
 
 func Handler(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello12345678")
+	return c.String(http.StatusOK, "Hello")
 }
 
 func main() {
