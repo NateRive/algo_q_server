@@ -17,5 +17,5 @@ func TestHandler(t *testing.T) {
 	router.ServeHTTP(rec, req)
 
 	assert.Equal(t, http.StatusOK, rec.Code)
-	assert.Equal(t, "Hello0000", rec.Body.String())
+	assert.Equal(t, "Hello99999", rec.Body.String())
 }
